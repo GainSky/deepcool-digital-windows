@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+    <Profiles />
+    <Settings>
+        <Setting Name="ShowCpuUsage" Type="System.Boolean" Scope="User">
+            <Value Profile="(Default)">false</Value>
+        </Setting>
+        <Setting Name="UseFahrenheit" Type="System.Boolean" Scope="User">
+            <Value Profile="(Default)">false</Value>
+        </Setting>
+    </Settings>
+</SettingsFile>
