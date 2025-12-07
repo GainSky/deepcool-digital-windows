@@ -16,6 +16,7 @@ public class TrayApplicationContext : ApplicationContext
 
     private bool _isFahrenheit;
     private bool _showCpuUsage;
+    private bool _autoChange;
     private readonly Random _random = new Random();
 
     public TrayApplicationContext()
@@ -30,6 +31,10 @@ public class TrayApplicationContext : ApplicationContext
         _updateTimer = new System.Windows.Forms.Timer { Interval = 1000 };
         _updateTimer.Tick += UpdateTimer_Tick;
         _updateTimer.Start();
+
+        _changeTimer = new System.Windows.Forms.Timer { Interval = 5000 };
+        _changeTimer.Tick += ChangeTimer_Tick;
+        _changeTimer.start();
 
         _trayIconManager.TemperatureUnitToggled += TrayIconManager_TemperatureUnitToggled;
         _trayIconManager.DisplayModeToggled += TrayIconManager_DisplayModeToggled;
@@ -55,6 +60,14 @@ public class TrayApplicationContext : ApplicationContext
         }
     }
 
+    private void ChangeTimer_Tick(object? sender, EventArgs e)
+    {
+        if (_autoChange)
+        {
+            _showCpuUsage = !_showCpuUsage;
+        }
+    }
+    
     private void TrayIconManager_TemperatureUnitToggled(object? sender, bool isFahrenheit)
     {
         _isFahrenheit = isFahrenheit;
